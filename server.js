@@ -42,7 +42,7 @@ app.listen(PORT, () => {
 // app.use(...);
 const db = require("./models");
 const Role = db.role;
-db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+db.mongoose.connect(`mongodb://mongodb+srv://omniah:4uJ8S4zeASan:w6@cluster0.9fhmt.mongodb.net/${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
