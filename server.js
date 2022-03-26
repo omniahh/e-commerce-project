@@ -41,9 +41,17 @@ app.listen(PORT, () => {
 // const app = express();
 // app.use(...);
 const db = require("./models");
+
 const Role = db.role;
-db.mongoose.connect(`mongodb://mongodb+srv://omniah:4uJ8S4zeASan:w6@cluster0.9fhmt.mongodb.net/${dbConfig.DB}`, {
-    useNewUrlParser: true,
+const username = "omniah";
+const password = "omnia1234";
+const cluster = "cluster0.9fhmt";
+const dbname = "e-commerce";
+
+db.mongoose.connect(
+  `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`, 
+  {    useNewUrlParser: true,
+  
     useUnifiedTopology: true
   })
   .then(() => {
