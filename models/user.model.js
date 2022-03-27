@@ -1,17 +1,41 @@
 const mongoose = require("mongoose");
+
+
+
+// const User = mongoose.model(
+//   "User",
+//   new mongoose.Schema({
+//     fname: String,
+//     lname: String,
+//     email: String,
+//     password: String,
+//     roles: [
+//       {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "Role"
+//       }
+//     ]
+//   })
+// );
+
 const User = mongoose.model(
   "User",
   new mongoose.Schema({
     fname: String,
     lname: String,
-    email: String,
+    email: {
+      type:String , 
+      required:true , 
+      unique:true
+    },
     password: String,
-    roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
-      }
-    ]
+    isAdmin:{
+      type:Boolean, 
+      default:false
+    }
   })
 );
+
+
+
 module.exports = User;

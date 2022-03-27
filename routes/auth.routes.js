@@ -8,14 +8,31 @@ module.exports = function(app) {
     );
     next();
   });
+
+  
+  // app.post(
+  //   "/api/auth/signup",
+  //   [
+  //     verifySignUp.checkDuplicateUsernameOrEmail,
+  //     verifySignUp.checkRolesExisted
+  //   ],
+  //   controller.signup
+  // );
+
+
+
+  //added by mustafa
   app.post(
     "/api/auth/signup",
     [
-      verifySignUp.checkDuplicateUsernameOrEmail,
-      verifySignUp.checkRolesExisted
+      verifySignUp.checkDuplicateUsernameOrEmail
     ],
-    controller.signup
+    controller.signup 
   );
+
+
+
+
   app.post("/api/auth/signin", controller.signin);
   app.post("/api/auth/signout", controller.signout);
 };
