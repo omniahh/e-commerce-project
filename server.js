@@ -28,6 +28,7 @@ app.use(
 );
 app.use('/api/products',require('./routes/product.routes'))
 app.use('/api/orders',require('./routes/order.routes'))
+app.use('/api/users',require('./routes/user.routes'))
 
 // simple route
 app.get("/", (req, res) => {
@@ -100,4 +101,4 @@ mongoose.connect("mongodb+srv://omnia:omnia@cluster0.5a1yo.mongodb.net/myFirstDa
     //
     // const app = express();
     require('./routes/auth.routes')(app);
-    require('./routes/user.routes')(app);
+    // require('./routes/user.routes')(app);
