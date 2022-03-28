@@ -22,7 +22,7 @@ async(req,res,next)=>
    res.json({data:acknowledge});
 }
 
-const updateUser=
+const updateProduct=
 async (req,res,next)=>
 {
     const {name , quantity , price , image , category }=req.body;
@@ -30,6 +30,13 @@ async (req,res,next)=>
     res.json({data:acknowledge});
 }
 
+const get_all_products=
+async(req,res,next)=>
+{
+    const products = await ProductModel.find({});
+    return res.status(200).json({status:"success",data:products});
+}
 
 
-module.exports={addProduct,deleteProduct,updateUser}
+
+module.exports={addProduct,deleteProduct,updateProduct,get_all_products}
