@@ -25,8 +25,8 @@ async(req,res,next)=>
 const updateProduct=
 async (req,res,next)=>
 {
-    const {name , quantity , price , image , category }=req.body;
-    const acknowledge = await ProductModel.updateOne({name , quantity , price , image , category});
+    const {name , quantity , price , image , category , productId }=req.body;
+    const acknowledge = await ProductModel.updateOne({_id:productId},{name , quantity , price , image , category});
     res.json({data:acknowledge});
 }
 
