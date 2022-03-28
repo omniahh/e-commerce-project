@@ -9,7 +9,7 @@ const dbConfig= require("./config/db.config");
 const app = express();
 
 
-
+require('express-async-errors');
 
 // var corsOptions = {
 //   origin: "http://localhost:8081"
@@ -26,6 +26,9 @@ app.use(
     httpOnly: true
   })
 );
+app.use('/api/products',require('./routes/product.routes'))
+app.use('/api/orders',require('./routes/order.routes'))
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to e-commerce application." });
@@ -43,6 +46,7 @@ app.listen(PORT, () => {
 // const app = express();
 // app.use(...);
 const db = require("./models");
+const { mongoose } = require("./models");
 
 const Role = db.role;
 const username = "omniah";
@@ -50,20 +54,22 @@ const password = "omnia1234";
 const cluster = "cluster0.9fhmt";
 const dbname = "e-commerce";
 
-db.mongoose.connect(
-  `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`, 
-  {    useNewUrlParser: true,
+// db.mongoose.connect(
+//   `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`, 
+//   {    useNewUrlParser: true,
   
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch(err => {
-    console.error("Connection error", err);
-    process.exit();
-  });
+//     useUnifiedTopology: true
+//   })
+//   .then(() => {
+//     console.log("Successfully connect to MongoDB.");
+//     initial();
+//   })
+//   .catch(err => {
+//     console.error("Connection error", err);
+//     process.exit();
+//   });
+
+mongoose.connect("mongodb+srv://omnia:omnia@cluster0.5a1yo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
   //
 
