@@ -37,6 +37,12 @@ async(req,res,next)=>
     return res.status(200).json({status:"success",data:products});
 }
 
+const getProductById = 
+async(req,res,next)=>
+{
+    const {id}=req.params;
+    const product = await ProductModel.findById(id);
+    res.status(200).json({status:"success",data:product});
+}
 
-
-module.exports={addProduct,deleteProduct,updateProduct,get_all_products}
+module.exports={addProduct,deleteProduct,updateProduct,get_all_products,getProductById}
