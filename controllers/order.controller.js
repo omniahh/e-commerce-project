@@ -22,7 +22,7 @@ const getOrderById=
 async(req,res,next)=>
 {
     const {id} = req.params;
-    const order = await OrderModel.findById(id);
+    const order = await OrderModel.findById(id).populate('userId',['fname','lname','email'])
     res.status(200).json({status:"success",data:order});
 }
 

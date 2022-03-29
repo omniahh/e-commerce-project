@@ -5,7 +5,8 @@ const {Schema}= mongoose;
 const orderSchema = new Schema({
  userId:{
      type:mongoose.Schema.Types.ObjectId,
-     required:true
+     required:true,
+     ref:"User"
  },
  totalPrice:{
      type:Number, 
