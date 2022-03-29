@@ -12,7 +12,12 @@ const checkout=
         res.status(403).json({status:"fail",errorMessage:err.message});
     })
 }
+const getAllOrders =
+async(req,res,next)=>
+{
+ const orders=await OrderModel.find({});
+ res.status(200).json({status:"success",data:orders})
+}
 
 
-
-module.exports={checkout}
+module.exports={checkout,getAllOrders}
