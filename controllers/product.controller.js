@@ -34,7 +34,7 @@ const get_all_products=
 async(req,res,next)=>
 {
     const products = await ProductModel.find({});
-    return res.status(200).json({status:"success",data:products});
+    return res.status(200).json({data});
 }
 
 const getProductById = 
@@ -42,7 +42,7 @@ async(req,res,next)=>
 {
     const {id}=req.params;
     const product = await ProductModel.findById(id);
-    res.status(200).json({status:"success",data:product});
+    res.status(200).json({data});
 }
 
 module.exports={addProduct,deleteProduct,updateProduct,get_all_products,getProductById}

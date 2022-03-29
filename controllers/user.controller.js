@@ -15,7 +15,7 @@ const getUserData =
 async(req,res,next)=>
 {
  const user = await UserModel.findById(req.userId);
- res.status(200).json({status:"success",data:_.omit(user.toObject(),['password','isAdmin'])})
+ res.status(200).json({data:_.omit(user.toObject(),['password','isAdmin'])})
 }
 
 
