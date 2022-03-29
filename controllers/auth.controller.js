@@ -162,3 +162,32 @@ exports.signout = async (req, res) => {
     this.next(err);
   }
 };
+exports.signinAdmin=
+async (req,res,next)=>
+{
+  const {email , password} = req.body; 
+const user = await User.findOne({email,isAdmin:true});
+if(!user)
+{
+  res.status(404).json({message:"email or passowrd not correct or not authorized admin"});
+  return ; 
+}
+var passwordIsValid = bcrypt.compareSync(password, user.password);
+if(passwordIsValid)
+{
+  var token = craeteToken(user.id);
+ return res.status(200).send({
+    id: user._id,
+    fname: user.fname,
+    lname: user.lname,
+    email: user.email,
+    isAdmin: user.isAdmin,
+    token:token 
+  });
+  
+}
+
+res.status(404).json({message:"email or passowrd not correct"});
+
+
+}
