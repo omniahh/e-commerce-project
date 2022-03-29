@@ -26,6 +26,12 @@ async(req,res,next)=>
     const order = await OrderModel.findById(id).populate('products.productId',['name','price']).populate('userId',['fname','lname','email'])
     res.status(200).json({status:"success",data:order});
 }
+const getOrdersByUserId = 
+async(req,res,next)=>
+{
+const usersOrder = await OrderModel.find({userId:req.userId});
+res.status(200).json({data:usersOrder});
+}
 
 
-module.exports={checkout,getAllOrders,getOrderById}
+module.exports={checkout,getAllOrders,getOrderById,getOrdersByUserId}
