@@ -18,6 +18,13 @@ async(req,res,next)=>
  const orders=await OrderModel.find({});
  res.status(200).json({status:"success",data:orders})
 }
+const getOrderById=
+async(req,res,next)=>
+{
+    const {id} = req.params;
+    const order = await OrderModel.findById(id);
+    res.status(200).json({status:"success",data:order});
+}
 
 
-module.exports={checkout,getAllOrders}
+module.exports={checkout,getAllOrders,getOrderById}
