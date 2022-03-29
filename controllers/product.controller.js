@@ -33,7 +33,7 @@ async (req,res,next)=>
 const get_all_products=
 async(req,res,next)=>
 {
-    const products = await ProductModel.find({});
+    const data = await ProductModel.find({});
     return res.status(200).json({data});
 }
 
