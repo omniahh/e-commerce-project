@@ -4,7 +4,7 @@ const {addProduct,deleteProduct,updateProduct,get_all_products,getProductById} =
 const {isAuthenticated,} = require('../middlewares/admin')
 
 router.post("/addProduct",isAuthenticated,addProduct);
-router.post("/deleteProduct",isAuthenticated,deleteProduct);
+router.delete("/deleteProduct",isAuthenticated,deleteProduct);
 router.patch("/updateProduct",isAuthenticated,updateProduct);
 router.get("/getAllProducts",get_all_products);
 router.get("/getProductById/:id",getProductById);
