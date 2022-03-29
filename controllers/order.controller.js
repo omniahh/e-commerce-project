@@ -15,7 +15,7 @@ const checkout=
 const getAllOrders =
 async(req,res,next)=>
 {
- const orders=await OrderModel.find({});
+ const orders=await OrderModel.find({}).populate('userId',['fname','lname','email']);
  res.status(200).json({status:"success",data:orders})
 }
 const getOrderById=
