@@ -4,6 +4,7 @@ const checkout=
 (req,res,next)=>
 {
     const {totalPrice , products} = req.body;
+    console.log(products);
     const order = new OrderModel({userId:req.userId,totalPrice , products}).save();
     order.then(data=>{
         res.status(200).json({status:"success",data});
@@ -16,7 +17,6 @@ const getAllOrders =
 async(req,res,next)=>
 {
  const orders=await OrderModel.find({}).populate('products.productId',['name','price']).populate('userId',['fname','lname','email'])
-//  const orders=await OrderModel.find({}).populate('userId',['fname','lname','email'])
  res.status(200).json({status:"success",data:orders})
 }
 const getOrderById=

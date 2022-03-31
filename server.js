@@ -70,7 +70,8 @@ const dbname = "e-commerce";
 //     process.exit();
 //   });
 
-mongoose.connect("mongodb+srv://omnia:omnia@cluster0.5a1yo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+// mongoose.connect("mongodb+srv://omniah:omniah@cluster0.a1fsw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+mongoose.connect("mongodb://127.0.0.1:27017/ecommerceAhmed")
 
   //
 
