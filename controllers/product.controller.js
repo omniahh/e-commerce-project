@@ -45,4 +45,12 @@ async(req,res,next)=>
     res.status(200).json({data});
 }
 
-module.exports={addProduct,deleteProduct,updateProduct,get_all_products,getProductById}
+const getProductByCategory = 
+async(req,res,next)=>
+{
+    const {categoryName}=req.params;
+    const data = await ProductModel.find({"category":categoryName});
+    res.status(200).json({data});
+}
+
+module.exports={addProduct,deleteProduct,updateProduct,get_all_products,getProductById,getProductByCategory}
