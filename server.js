@@ -6,10 +6,13 @@ const express= require("express");
 const cors= require("cors");
 const cookieSession = require("cookie-session");
 const dbConfig= require("./config/db.config");
+const morgan = require('morgan');
 const app = express();
 
 
 require('express-async-errors');
+
+app.use(morgan('tiny'))
 
 // var corsOptions = {
 //   origin: "http://localhost:8081"
@@ -70,7 +73,7 @@ const dbname = "e-commerce";
 //     process.exit();
 //   });
 
-mongoose.connect("mongodb+srv://omnia:omnia@cluster0.5a1yo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://omniah:omniah@cluster0.a1fsw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
   //
 

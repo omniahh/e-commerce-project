@@ -6,10 +6,14 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const _=require('lodash')
 
+// const craeteToken =(userId)=>{
+//   return  jwt.sign({ id: userId}, config.secret, {
+//     expiresIn: 86400, // 24 hours
+//   });
+
+// }
 const craeteToken =(userId)=>{
-  return  jwt.sign({ id: userId}, config.secret, {
-    expiresIn: 86400, // 24 hours
-  });
+  return  jwt.sign({ id: userId}, config.secret);
 
 }
 
