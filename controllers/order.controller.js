@@ -29,9 +29,17 @@ async(req,res,next)=>
 const getOrdersByUserId = 
 async(req,res,next)=>
 {
-const usersOrder = await OrderModel.find({userId:req.userId});
+const usersOrder = await OrderModel.find({userId:req.userId}).populate('products.productId',['name','price']);
 res.status(200).json({data:usersOrder});
 }
 
+const deleteOrder=
+async(req,res,next)=>
+{
+    const {orderId} =req.body;
+    const acknowledge  = await OrderModel.deleteOne({_id:orderId})
+   res.json({data:acknowledge});
+}
 
-module.exports={checkout,getAllOrders,getOrderById,getOrdersByUserId}
+
+module.exports={checkout,getAllOrders,getOrderById,getOrdersByUserId,deleteOrder}
