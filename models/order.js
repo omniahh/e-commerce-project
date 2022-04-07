@@ -16,7 +16,7 @@ const orderSchema = new Schema({
 {
     productId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Product"
+        ref:"Product",
      },
      productQuantity:{type:Number}
      

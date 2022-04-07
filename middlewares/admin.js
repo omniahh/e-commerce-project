@@ -16,7 +16,7 @@ const user= await UserModel.findById(id);
 console.log(user.isAdmin)
 if(user.isAdmin===false)
 {
-return res.status(403).send({ message: "admin role imvalid!" });
+return res.status(403).send({ message: "admin role invalid!" });
 }
 req.userId = id;
 next();

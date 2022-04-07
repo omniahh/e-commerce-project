@@ -1,5 +1,6 @@
 
 const OrderModel= require('../models/order')
+const ProdutModel =require('../models/product')
 const checkout=
 (req,res,next)=>
 {
@@ -7,6 +8,10 @@ const checkout=
     console.log(products);
     const order = new OrderModel({userId:req.userId,totalPrice , products}).save();
     order.then(data=>{
+        data.products.map(async({productId,productQuantity})=>{
+            const result= await   ProdutModel.updateOne({_id:productId},{$inc:{quantity:-productQuantity}})
+            console.log(result);
+        })
         res.status(200).json({status:"success",data});
     })
     .catch(err=>{

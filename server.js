@@ -38,6 +38,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to e-commerce application." });
 });
 
+
+app.use(require('./middlewares/handleErrors'))
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
